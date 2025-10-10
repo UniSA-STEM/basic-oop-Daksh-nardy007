@@ -1,8 +1,8 @@
 """
 File: Asset.py
 Description: <A brief description of this Python module.>
-Author: <full name>
-ID: <student_id>
-Username: <username>
+Author: Daksh Narang
+ID: 110402115
+Username: nardy007
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
