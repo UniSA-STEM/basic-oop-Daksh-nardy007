@@ -6,3 +6,8 @@ ID: 110402115
 Username: nardy007
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
+
+from Rig import Rig
+
+rig = Rig("Daksh")
+print(rig.__str__())
