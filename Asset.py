@@ -9,17 +9,23 @@ This is my own work as defined by the University's Academic Misconduct Policy.
 
 class Asset:
     def __init__(self, name: str, description: str, encrypted: bool = False):
-        self.name = name
-        self.description = description
-        self.encrypted = encrypted
+        self.__name = name
+        self.__description = description
+        self.__encrypted = encrypted
 
-    def __str__(self) -> str:
-        if self.encrypted:
+    def __str__(self):
+        if self.get_encrypted():
             return f"{self.name}: {self.description} [Encrypted]"
         return f"{self.name}: {self.description}"
 
-    def encrypt(self) -> None:
-        self.encrypted = True
+    def encrypt(self):
+        self.__encrypted = True
 
-    def decrypt(self) -> None:
-        self.encrypted = False
+    def decrypt(self):
+        self.__encrypted = False
+
+    def get_encrypted(self):
+        return self.__encrypted
+
+    def get_name(self):
+        return self.__name
