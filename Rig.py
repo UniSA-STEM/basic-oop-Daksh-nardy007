@@ -19,3 +19,8 @@ class Rig:
             Asset("Data Spike", "Used in battles."),
             Asset("Removable Drive", "Found in rigs and used for extraction."),
         ]
+
+    def take_hit(self):
+        self.damage +=1
+        if self.damage >=2 and self.upgrade_level ==0:
+            self.broken = True
