@@ -7,6 +7,22 @@ Username: nardy007
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
 
+import random
+from Asset import Asset
+
+
+def generate_asset():
+    asset_list = [
+        ("CryptoToken", "Used to acquire or repair rigs."),
+        ("Data Spike", "Used in battles."),
+        ("Removable Drive", "Found in rigs and used for extraction."),
+        ("Security Chip", "Used to encrypt or decrypt assets."),
+        ("Hardware Patch", "Used to upgrade rigs."),
+    ]
+    name, description = random.choice(asset_list)
+    return Asset(name, description)
+
+
 class Rig:
 
     def __init__(self, name):
@@ -40,7 +56,7 @@ class Rig:
         if self.__damage >=2 and self.__upgrade_level ==0:
             self.__broken = True
 
-    def repair(self,token):
+    def repair(self):
         if self.__damage == 0 and not self.__broken:
             print("No repair is needed.")
             return
@@ -73,5 +89,14 @@ class Rig:
                     return False
         print("Asset not found in storage.")
         return False
+
+    def condition(self):
+        if self.__broken:
+            return f"Broken (Level{self.__upgrade_level})"
+
+        if self.__damage == 0:
+            return f"Pristine (Level {self.__upgrade_level})"
+
+        return f"Damages ({self.__damage}) (Level {self.__upgrade_level})"
 
 
