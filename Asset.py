@@ -7,15 +7,16 @@ Username: nardy007
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
 
+
 class Asset:
-    def __init__(self, name: str, description: str, encrypted: bool = False):
+    def __init__(self, name, description, encrypted=False):
         self.__name = name
         self.__description = description
         self.__encrypted = encrypted
 
     def __str__(self):
-        if self.get_encrypted():
-            return f"{self.name}: {self.description} [Encrypted]"
+        if self.encrypted():
+            return f"{self.name()}: {self.description()} [Encrypted]"
         return f"{self.name}: {self.description}"
 
     def encrypt(self):
@@ -24,9 +25,13 @@ class Asset:
     def decrypt(self):
         self.__encrypted = False
 
-    def get_encrypted(self):
+    def name(self):
+        return self.__name
+
+    def description(self):
+        return self.__description
+
+    def encrypted(self):
         return self.__encrypted
 
-    def get_name(self):
-        return self.__name
 
