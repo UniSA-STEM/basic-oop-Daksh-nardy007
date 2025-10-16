@@ -48,5 +48,10 @@ class Rig:
         self.__broken = False
         print("Repaired successfully.")
 
+    def upgrade(self, patch_asset):
+        if patch_asset.name() == "Hardware Patch":
+            self.__upgrade_level += 1
+            print("Upgrade the level by 1")
+
 
 
