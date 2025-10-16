@@ -40,3 +40,13 @@ class Rig:
         if self.__damage >=2 and self.__upgrade_level ==0:
             self.__broken = True
 
+    def repair(self,token):
+        if self.__damage == 0 and not self.__broken:
+            print("No repair is needed.")
+            return
+        self.__damage =0
+        self.__broken = False
+        print("Repaired successfully.")
+
+
+
