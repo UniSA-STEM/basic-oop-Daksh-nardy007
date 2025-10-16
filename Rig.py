@@ -53,5 +53,25 @@ class Rig:
             self.__upgrade_level += 1
             print("Upgrade the level by 1")
 
+    def store(self,asset):
+        if asset.encrypted():
+            print("Decrypt asset to store it.")
+            return
+        self.__storage.append(asset)
+        print("Asset stored successfully.")
+
+    def release(self,name):
+        for asst in self.__storage:
+
+            if asst.name()==name:
+                if not asst.encrypted():
+                    self.__storage.remove(asst)
+                    print("Asset released successfully.")
+                    return True
+                else:
+                    print("Decrypt asset to release it.")
+                    return False
+        print("Asset not found in storage.")
+        return False
 
 
