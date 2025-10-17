@@ -142,3 +142,17 @@ class Hacker:
             self._extract_from_broken(target)
         return True
 
+    def __str__(self):
+        if not self.__inventory:
+            invent = "Empty"
+        else:
+            invent = ""
+            for a in self.__inventory:
+                invent += a.__str__() + ", "
+            invent = invent[:-2]
+
+        if self.__rig:
+            rig = self.__rig.name
+        else:
+            rig = "None"
+        return f"Hacker<{self.__name}> rig={rig} trace={self.__trace_level} | Inventory: {invent}"
