@@ -7,7 +7,10 @@ Username: nardy007
 This is my own work as defined by the University's Academic Misconduct Policy.
 """
 
+from Asset import Asset
+from Rig import Rig
 
+Trace_threshold = 5
 class Hacker:
 
     def __init__(self, name):
@@ -47,3 +50,17 @@ class Hacker:
             if a.name() == name:
                 return a
         return None
+
+    def _blocked(self):
+        return self.__trace_level > Trace_threshold
+
+    def acquire_rig(self, rig_name):
+        if self.__rig:
+            return False
+        token = self._take_from_inventory("CryptoToken")
+        if not token:
+            return False
+        self.__rig = Rig(rig_name)
+        print(f"Rig Activated {rig_name}")
+        return True
+
