@@ -75,3 +75,12 @@ class Hacker:
             print("No Hardware Patch available")
             return False
         return self.__rig.upgrade(patch)
+
+    def repair_rig(self):
+        if not self.__rig:
+            return False
+        token = self._take_from_inventory("CryptoToken")
+        if not token:
+            print("No token to repairs.")
+            return False
+        return self.__rig.repair(token)
