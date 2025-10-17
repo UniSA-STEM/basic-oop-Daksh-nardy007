@@ -64,3 +64,14 @@ class Hacker:
         print(f"Rig Activated {rig_name}")
         return True
 
+    def upgrade_rig(self):
+        if not self.__rig:
+            return False
+        if self._blocked():
+            print("Trace too high")
+            return False
+        patch = self._take_from_inventory("Hardware Patch")
+        if not patch:
+            print("No Hardware Patch available")
+            return False
+        return self.__rig.upgrade(patch)
