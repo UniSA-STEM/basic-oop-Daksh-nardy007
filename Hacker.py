@@ -84,3 +84,12 @@ class Hacker:
             print("No token to repairs.")
             return False
         return self.__rig.repair(token)
+
+    def retrieve_from_rig(self, name):
+        if not self.__rig:
+            return False
+        item_asset = self.__rig.release(name)
+        if not item_asset:
+            return False
+        self.__inventory.append(item_asset)
+        return True
