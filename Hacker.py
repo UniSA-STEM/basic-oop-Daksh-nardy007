@@ -34,3 +34,16 @@ class Hacker:
     def set_rig(self, rig):
         self.__rig = rig
 
+    def _take_from_inventory(self, name):
+        index = 0
+        for a in self.__inventory:
+            if a.name() == name:
+                return self.__inventory.pop(index)
+            index += 1
+        return None
+
+    def _peek_inventory(self, name):
+        for a in self.__inventory:
+            if a.name() == name:
+                return a
+        return None
