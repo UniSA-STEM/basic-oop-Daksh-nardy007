@@ -129,3 +129,16 @@ class Hacker:
             print("Asset encrypted successfully")
         return True
 
+    def launch_data_spike(self, target: "Hacker"):
+
+        spike = self.__rig.release("Data Spike")
+        self.__trace_level += 1
+
+        if target.get_rig():
+            target.get_rig().take_hit()
+            print(f"{target.get_name()}'s rig get hit.")
+
+        if target.get_rig().broken():
+            self._extract_from_broken(target)
+        return True
+
