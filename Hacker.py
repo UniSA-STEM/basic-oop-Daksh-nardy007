@@ -93,3 +93,13 @@ class Hacker:
             return False
         self.__inventory.append(item_asset)
         return True
+
+    def store_to_rig(self,name):
+        if not self.__rig:
+            return False
+        item = self._take_from_inventory(name)
+        if not item:
+            return False
+        self.__rig.store(item)
+        return True
+
