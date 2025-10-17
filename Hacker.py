@@ -103,3 +103,29 @@ class Hacker:
         self.__rig.store(item)
         return True
 
+    def encrypt_asset(self, where, name):
+        target = None
+        if not self.__rig:
+            return False
+        if where == "inventory":
+            for asset in self.__inventory:
+                if asset.name() == name:
+                    target = asset
+                    break
+        elif where == "rig":
+            for asset in self.__rig.storage():
+                if asset.name() == name:
+                    target = asset
+                    break
+        else:
+            return False
+
+        is_encrypted = target.encrypted()
+        if is_encrypted:
+            target.decrypt()
+            print("Asset decrypted successfully")
+        else:
+            target.encrypt()
+            print("Asset encrypted successfully")
+        return True
+
