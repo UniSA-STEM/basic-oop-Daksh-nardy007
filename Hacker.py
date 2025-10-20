@@ -142,6 +142,21 @@ class Hacker:
             self._extract_from_broken(target)
         return True
 
+    def _extract_from_broken(self, target:"Hacker"):
+        drive = self.__rig.release("Removable Drive")
+        if not drive:
+            print("No removable Drive.")
+            return False
+        index = 0
+        for a in target.get_rig().storage():
+            if not a.encrypted():
+                stolen_asset = target.get_rig().storage().pop(index)
+                self.__inventory.append(stolen_asset)
+                print("Extraction succeed")
+                return True
+            index +=1
+        return False
+
     def __str__(self):
         if not self.__inventory:
             invent = "Empty"
