@@ -90,6 +90,17 @@ class Rig:
         print("Asset not found in storage.")
         return False
 
+    def generate_asset(self):
+        Asset_List = [
+            ("CryptoToken", "Used to acquire or repair rigs."),
+            ("Data Spike", "Used in battles."),
+            ("Removable Drive", "Found in rigs and used for extraction."),
+            ("Security Chip", "Used to encrypt or decrypt assets."),
+            ("Hardware Patch", "Used to upgrade rigs."),
+        ]
+        name, description = random.choice(Asset_List)
+        return Asset(name, description)
+
     def condition(self):
         if self.__broken:
             return f"Broken (Level{self.__upgrade_level})"
