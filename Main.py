@@ -56,6 +56,12 @@ def main():
             daksh.get_rig().storage().append(Asset("Data Spike", "Used in battles."))
     print(f"{narang.get_name()}'s rig is now {narang.get_rig().condition()}\n")
 
-
+    # Daksh uses Removable Drive to steal first unencrypted asset
+    print("Daksh tries to extract data from the broken rig...")
+    daksh._extract_from_broken(narang)
+    print(f"{daksh.get_name()}'s inventory:")
+    for a in daksh.get_inventory():
+        print(" -", a)
+    print()
 
 main()
