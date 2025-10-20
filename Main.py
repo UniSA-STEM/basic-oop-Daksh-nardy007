@@ -47,6 +47,14 @@ def main():
     narang.encrypt_asset("rig", "CryptoToken")
     print(narang.get_rig(), "\n")
 
+    # Daksh launches Data Spikes at Narang’s rig until it breaks and trace level increases; Data Spikes are consumed and replenished
+    print("Daksh attacks Narang’s rig...")
+    while not narang.get_rig().broken():
+        daksh.launch_data_spike(narang)
+        # Replenish a Data Spike so demo can continue to a break
+        if not any(a.name() == "Data Spike" for a in daksh.get_rig().storage()):
+            daksh.get_rig().storage().append(Asset("Data Spike", "Used in battles."))
+    print(f"{narang.get_name()}'s rig is now {narang.get_rig().condition()}\n")
 
 
 
