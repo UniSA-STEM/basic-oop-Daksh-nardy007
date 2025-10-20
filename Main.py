@@ -13,6 +13,7 @@ from Hacker import Hacker
 def main():
     print("=== Into the Simulation ===\n")
 
+    # Setup with two hackers with assets
     daksh = Hacker("Daksh")
     narang = Hacker("Narang")
 
@@ -25,6 +26,20 @@ def main():
     print(f"{daksh.get_name()} and {narang.get_name()} enter the network.")
     print(f"{daksh.get_name()} has {len(daksh.get_inventory())} assets.")
     print(f"{narang.get_name()} has {len(narang.get_inventory())} assets.\n")
+
+    # Spend CryptoToken to activate a rig for each hacker
+    print("Acquiring rigs...")
+    daksh.acquire_rig("CyberBlade")
+    narang.acquire_rig("SteelFort")
+
+    print(f"{daksh.get_name()}'s rig: {daksh.get_rig().condition()}")
+    print(f"{narang.get_name()}'s rig: {narang.get_rig().condition()}\n")
+
+    # Use a Hardware Patch to increase Daksh's rig level
+    print("Upgrading Daksh's rig...")
+    daksh.upgrade_rig()
+    print(f"{daksh.get_name()}'s rig: {daksh.get_rig().condition()}\n")
+
 
 
 main()
