@@ -64,4 +64,12 @@ def main():
         print(" -", a)
     print()
 
-main()
+    # Narang repairs with a CryptoToken
+    print("Narang repairs his rig...")
+    narang.get_inventory().append(Asset("CryptoToken", "Used to acquire or repair rigs."))
+    narang.repair_rig()
+    print(narang.get_rig(), "\n")
+
+
+if __name__ == "__main__":
+    main()
