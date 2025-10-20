@@ -40,6 +40,14 @@ def main():
     daksh.upgrade_rig()
     print(f"{daksh.get_name()}'s rig: {daksh.get_rig().condition()}\n")
 
+    # Narang stores and encrypts a CryptoToken in rig storage
+    print("Narang stores and encrypts a CryptoToken...")
+    narang.get_inventory().append(Asset("CryptoToken", "Used to acquire or repair rigs."))
+    narang.store_to_rig("CryptoToken")
+    narang.encrypt_asset("rig", "CryptoToken")
+    print(narang.get_rig(), "\n")
+
+
 
 
 main()
