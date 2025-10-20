@@ -70,6 +70,12 @@ def main():
     narang.repair_rig()
     print(narang.get_rig(), "\n")
 
+    # Daksh generates and stores a random asset
+    print("Daksh generates a new random asset...")
+    new_item = daksh.get_rig().generate_asset()
+    print("New asset created:", new_item)
+    daksh.get_rig().store(new_item)
+    print()
 
 if __name__ == "__main__":
     main()
