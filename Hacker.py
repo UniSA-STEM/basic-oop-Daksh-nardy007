@@ -83,7 +83,7 @@ class Hacker:
         if not token:
             print("No token to repairs.")
             return False
-        return self.__rig.repair(token)
+        return self.__rig.repair()
 
     def retrieve_from_rig(self, name):
         if not self.__rig:

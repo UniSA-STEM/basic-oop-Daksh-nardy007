@@ -14,7 +14,7 @@ def main():
     print("=== Into the Simulation ===\n")
 
     # Setup with two hackers with assets
-    daksh = Hacker("Daksh")
+    daksh= Hacker("Daksh")
     narang = Hacker("Narang")
 
     daksh.get_inventory().append(Asset("Hardware Patch", "Used to upgrade rigs."))
@@ -57,7 +57,7 @@ def main():
     print(f"{narang.get_name()}'s rig is now {narang.get_rig().condition()}\n")
 
     # Daksh uses Removable Drive to steal first unencrypted asset
-    print("Daksh tries to extract data from the broken rig...")
+    print('Daksh tries to extract data from the broken rig...')
     daksh._extract_from_broken(narang)
     print(f"{daksh.get_name()}'s inventory:")
     for a in daksh.get_inventory():
@@ -77,5 +77,14 @@ def main():
     daksh.get_rig().store(new_item)
     print()
 
-if __name__ == "__main__":
-    main()
+    # Summary
+    print("Final status:")
+    print(f"Hacker: {daksh.get_name()} | Trace Level: {daksh.get_trace_level()}")
+    print(daksh.get_rig())
+    print()
+    print(f"Hacker: {narang.get_name()} | Trace Level: {narang.get_trace_level()}")
+    print(narang.get_rig())
+
+    print("\n END")
+
+main()
