@@ -1,6 +1,6 @@
 """
 File: Hacker.py
-Description: <A brief description of this Python module.>
+Description: Defines Hacker class that manages rigs, assets, encryption, and attacks.
 Author: Daksh Narang
 ID: 110402115
 Username: nardy007
@@ -14,30 +14,38 @@ Trace_threshold = 5
 class Hacker:
 
     def __init__(self, name):
+        # Initialize hacker with name, zero trace, starter CryptoToken
         self.__name = name
         self.__trace_level = 0
         self.__inventory = [Asset("CryptoToken", "Used to acquire or repair rigs."), ]
         self.__rig = None
 
     def get_name(self):
+        # Return hacker name
         return self.__name
 
     def get_trace_level(self):
+        # Return current trace level
         return self.__trace_level
 
     def get_inventory(self):
+        # Return list of assets in inventory
         return self.__inventory
 
     def get_rig(self):
+        # Return hacker's current rig
         return self.__rig
 
     def set_trace_level(self, value):
+        # Set trace level manually
         self.__trace_level = value
 
     def set_rig(self, rig):
+        # Assign a rig manually
         self.__rig = rig
 
     def _take_from_inventory(self, name):
+        # Remove and return asset by name
         index = 0
         for a in self.__inventory:
             if a.name() == name:
@@ -46,15 +54,18 @@ class Hacker:
         return None
 
     def _peek_inventory(self, name):
+        # Check if asset exists in inventory
         for a in self.__inventory:
             if a.name() == name:
                 return a
         return None
 
     def _blocked(self):
+        # Block actions if trace too high
         return self.__trace_level > Trace_threshold
 
     def acquire_rig(self, rig_name):
+        # Spend CryptoToken to acquire new rig
         if self.__rig:
             return False
         token = self._take_from_inventory("CryptoToken")
@@ -65,6 +76,7 @@ class Hacker:
         return True
 
     def upgrade_rig(self):
+        # Use Hardware Patch to upgrade rig level
         if not self.__rig:
             return False
         if self._blocked():
@@ -77,6 +89,7 @@ class Hacker:
         return self.__rig.upgrade(patch)
 
     def repair_rig(self):
+        # Repair rig using CryptoToken
         if not self.__rig:
             return False
         token = self._take_from_inventory("CryptoToken")
@@ -86,6 +99,7 @@ class Hacker:
         return self.__rig.repair()
 
     def retrieve_from_rig(self, name):
+        # Retrieve asset from rig to inventory
         if not self.__rig:
             return False
         item_asset = self.__rig.release(name)
@@ -95,6 +109,7 @@ class Hacker:
         return True
 
     def store_to_rig(self,name):
+        # Move asset from inventory to rig
         if not self.__rig:
             return False
         item = self._take_from_inventory(name)
@@ -104,6 +119,7 @@ class Hacker:
         return True
 
     def encrypt_asset(self, where, name):
+        # Encrypt or decrypt asset
         target = None
         if not self.__rig:
             return False
@@ -130,7 +146,7 @@ class Hacker:
         return True
 
     def launch_data_spike(self, target: "Hacker"):
-
+        # Attack target's rig and raise trace level
         spike = self.__rig.release("Data Spike")
         self.__trace_level += 1
 
@@ -143,6 +159,7 @@ class Hacker:
         return True
 
     def _extract_from_broken(self, target:"Hacker"):
+        # Extract unencrypted asset from broken rig
         drive = self.__rig.release("Removable Drive")
         if not drive:
             print("No removable Drive.")
@@ -158,6 +175,7 @@ class Hacker:
         return False
 
     def __str__(self):
+        # Display hacker name, rig, trace level, and inventory
         if not self.__inventory:
             invent = "Empty"
         else:

@@ -1,6 +1,6 @@
 """
 File: main.py
-Description: <A brief description of this Python module.>
+Description: Demonstrates all class interactions with test scenarios.
 Author: Daksh Narang
 ID: 110402115
 Username: nardy007
@@ -11,7 +11,7 @@ from Asset import Asset
 from Hacker import Hacker
 
 def main():
-    print("=== Into the Simulation ===\n")
+    print("START\n")
 
     # Setup with two hackers with assets
     daksh= Hacker("Daksh")

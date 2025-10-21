@@ -1,6 +1,6 @@
 """
 File: Rig.py
-Description: <A brief description of this Python module.>
+Description: Defines Rig class that stores assets, upgrades, repairs, and generates items.
 Author: Daksh Narang
 ID: 110402115
 Username: nardy007
